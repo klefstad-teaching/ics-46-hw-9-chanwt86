@@ -9,15 +9,6 @@ using namespace std;
 
 constexpr int INF = numeric_limits<int>::max();
 
-struct Node{
-    int vertex;
-    int weight;
-
-    bool operator>(const Node & other) const{
-        return weight > other.weight;
-    }
-};
-
 struct Edge {
     int src=0;
     int dst=0;
@@ -36,8 +27,6 @@ struct Edge {
 
 struct Graph : public vector<vector<Edge>> {
     int numVertices=0;
-
-    list<list<Node>> adjacencyList;
 };
 
 inline istream& operator>>(istream& in, Graph& G) {
