@@ -35,6 +35,9 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
                 i++;
                 j++;
             }
+        } else {
+            i++;
+            j++;
         }
     }
 
