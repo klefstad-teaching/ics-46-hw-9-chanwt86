@@ -32,6 +32,9 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
                 i++;
             } else if (len1 < len2){
                 j++;
+            } else {
+                i++;
+                j++;
             }
         } else {
             i++;
