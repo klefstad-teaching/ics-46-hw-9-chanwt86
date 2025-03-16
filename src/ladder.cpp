@@ -68,77 +68,6 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         string last_word = ladder.back();
 
         for (const string& word : word_list) {
-            if (is_adjacent(last_word, word) && visited.find(last_word) == visited.end()) {
-                visited.insert(word);
-                vector<string> new_ladder = ladder;
-                new_ladder.push_back(word);
-                if (word == end_word) {
-                    return new_ladder;
-                }
-                ladder_queue.push(new_ladder);
-            }
-        }
-    }
-    return {};
-    
-    /*if (word_list.find(end_word) == word_list.end()) {
-        return {};
-    }
-
-    queue<vector<string>> ladder_queue;
-    ladder_queue.push({begin_word});
-
-    unordered_set<string> dict(word_list.begin(), word_list.end());
-
-    while (!ladder_queue.empty()) {
-        int size = ladder_queue.size(); 
-        unordered_set<string> visited;
-
-        for (int i = 0; i < size; ++i) {
-            vector<string> ladder = ladder_queue.front();
-            ladder_queue.pop();
-            string last_word = ladder.back();
-
-            for (int j = 0; j < last_word.size(); ++j) {
-                string temp = last_word;
-                for (char c = 'a'; c <= 'z'; c++) {
-                    if (c == last_word[j]) {
-                        continue;
-                    }
-
-                    temp[j] = c;
-
-                    if (temp == end_word) {
-                        ladder.push_back(temp);
-                        return ladder;
-                    }
-
-                    if (dict.count(temp)) {
-                        vector<string> new_ladder = ladder;
-                        new_ladder.push_back(temp);
-                        ladder_queue.push(new_ladder);
-                        visited.insert(temp);
-                    }
-                }
-            }
-        }
-
-        for (const string & word : visited) {
-            dict.erase(word);
-        }
-    }
-
-    return {};
-
-    unordered_set<string> visited;
-    visited.insert(begin_word);
-
-    while (!ladder_queue.empty()){
-        vector<string> ladder = ladder_queue.front();
-        ladder_queue.pop();
-        string last_word = ladder.back();
-
-        for (const string& word : word_list) {
             if (is_adjacent(last_word, word) && visited.find(word) == visited.end()) {
                 visited.insert(word);
                 vector<string> new_ladder = ladder;
@@ -151,7 +80,6 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         }
     }
     return {};
-    */
 }
 
 void load_words(set<string> & word_list, const string& file_name){
