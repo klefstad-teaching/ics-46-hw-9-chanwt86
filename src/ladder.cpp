@@ -36,6 +36,9 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
                 i++;
                 j++;
             }
+        }  else {
+            i++;
+            j++;
         }
     }
 
@@ -64,12 +67,8 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         ladder_queue.pop();
         string last_word = ladder.back();
 
-        if (visited.find(last_word) != visited.end()) {
-            continue;
-        }
-
         for (const string& word : word_list) {
-            if (is_adjacent(last_word, word) && !visited.count(word)) {
+            if (is_adjacent(last_word, word) && visited.find(last_word) == visited.end()) {
                 visited.insert(word);
                 vector<string> new_ladder = ladder;
                 new_ladder.push_back(word);
