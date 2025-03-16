@@ -56,6 +56,10 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         return {begin_word};
     }
 
+    if (word_list.find(end_word) == word_list.end()) {
+        return {};
+    }
+
     queue<vector<string>> ladder_queue;
     ladder_queue.push({begin_word});
 
